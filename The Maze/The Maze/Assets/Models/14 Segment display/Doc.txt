@@ -1,0 +1,47 @@
+Hi, thank you for buying the 14 segment display ! Here is some documentation on how it works, and how to use it.
+
+You will find 4 prefabs ready to use in the package:
+
+- digit:
+	The main asset. It is a model, made of a background and 14 parts. A script named "Digit" is attached to it.
+	parameters:
+
+		- Inactive color:	The color of the inactive segments
+		- Active color:		The color of the active segments
+		- Letter:			The current letter. You can change it just by editing the field. by script you can call: myDigit.letter = "X"
+		- Force Lower:		If the letter is uppercase, the script will change it to lower. Otherwise, a and A can display different things
+
+- Clock:
+	A simple clock. You can make it display real or custom clock
+	parameters:
+	
+		- realTime:			switch to real time display, or custom time
+		- displayType:		A single clock can display 2 digits, and a single component of the time: hours, minuts, or seconds
+		- Value:			The actual displayed Number
+		- addValue:			Determines if the clock will run forward (1) or backward (-1)
+		- Running:			the clock is running (checked) or not (unchecked)
+		- Digit:			The 2 digits of the clock are referenced here
+		- SecondCounter:	This field determines the seconds left between two steps. For example, when the displayType is set
+							on hours, The secondCounter go through 0 to 3600 seconds. Then, the value increments.
+		
+
+- Bomb:
+	You will find it in the folder of the same name. It is a ready to use Bomb. There is a script attached to it called CountDown.
+	to start or stop the countdown any moment at runtime, call the functions:
+	
+		public void startCountDown(int hours, int minuts, int seconds);
+		public void stopCountDown();
+		
+	You can also change the explosion instantiated by the bomb, just by dragging a new prefab in the field "Obj To Instantiate"
+
+- AlarmClock:
+	You will find it in the folder of the same name. it is just a model, with a clock in the children
+
+- Display:
+	You will find it in the folder of the same name. it a empty GameObject, with 16 children digit. On the GameObject, There is a
+	script called Display. You can add extend the display just by adding new digits in the digit list. You can change the message
+	displayed, just the field of the same name.
+	at runtime, you can change it with :
+	
+		myDisplay.message = "Hello World";
+
