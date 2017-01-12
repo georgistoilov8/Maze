@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 8ca3819d1b88bcb4191bd7dca8ac1a33
+timeCreated: 1484240478
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zombie Control Condensed Italic
+  fontNames:
+  - Zombie Control Condensed Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

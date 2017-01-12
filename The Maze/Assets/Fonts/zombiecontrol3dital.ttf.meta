@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2f329512013d4f847ab3d6826450e579
+timeCreated: 1484240477
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zombie Control 3D Italic
+  fontNames:
+  - Zombie Control 3D Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

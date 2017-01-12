@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Spin : MonoBehaviour {
 	protected bool timerStart = false;
@@ -12,6 +13,7 @@ public class Spin : MonoBehaviour {
 	GameObject player;
 	public int TrapSpinSpeed;
 	public int PlayerSpinSpeed;
+	private CursorLockMode cursorState;
 
 	private void Start () {
 		bottomGlasses = GameObject.FindGameObjectsWithTag ("BottomGlass");
@@ -60,7 +62,6 @@ public class Spin : MonoBehaviour {
 			timerStart = false;
 			Destroy(this);
 		}
-		//Debug.Log (timerSeconds);
 	}
 
 	private void MoveTrapUp(){
@@ -70,17 +71,31 @@ public class Spin : MonoBehaviour {
 
 	private void MoveTrapDown(){
 		trapRoundGlasses.transform.position = new Vector3 (transform.position.x, transform.position.y - 2.6f, transform.position.z);
+		FirstPersonController.isInventoryOpen = !FirstPersonController.isInventoryOpen;
+		cursorState = CursorLockMode.None;
+		Cursor.lockState = cursorState;
+		SetCursorState ();
 	}
 
-	protected void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Player") {
+	void OnTriggerEnter(Collider other){
+		Debug.Log ("asdasdasdasd");
+		if (other.tag.Equals("Player")) {
 			trapBottomGlass = CheckTrapPosition ();
 			trapRoundGlasses = CheckGlassWallsPosition ();
 			Debug.Log("Enter");
 			timerSeconds = 5f;
 			isGlassWallDown = true;
 			timerStart = true;
+			FirstPersonController.isInventoryOpen = !FirstPersonController.isInventoryOpen;
+			cursorState = CursorLockMode.None;
+			Cursor.lockState = cursorState;
+			SetCursorState ();
 		}
 	}
 
+	private void SetCursorState ()
+	{
+		Cursor.lockState = cursorState;
+		Cursor.visible = (CursorLockMode.Locked != cursorState);
+	}
 }

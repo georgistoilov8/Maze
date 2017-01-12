@@ -37,10 +37,12 @@ public class Inventory : MonoBehaviour
 	private GameObject player;
 	public GameObject lighter;
 	public GameObject torch;
-	public GameObject map;
+	public GameObject MapL1N1;
+	public GameObject MapL1N2;
+	public float percentageByX;
+	public float percentageByY;
 
 	private bool shouldRemoveItemFromInventory;
-	private int nextFreeSlot;
 	// Use this for initialization
 	void Start () 
 	{
@@ -59,8 +61,8 @@ public class Inventory : MonoBehaviour
 			mapSlots.Add (new Item ());
 		}
 		database = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent<ItemDatabase>();
-		//AddItem (0);
-		AddItem (2);
+		//AddItem (3);
+		//AddItem (2);
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 
@@ -68,7 +70,6 @@ public class Inventory : MonoBehaviour
 	{
 		if(Input.GetButtonDown("Inventory"))
 		{
-			nextFreeSlot = 0;
 			showInventory = !showInventory;
 			FirstPersonController.isInventoryOpen = !FirstPersonController.isInventoryOpen;
 			cursorState = CursorLockMode.None;
@@ -76,7 +77,7 @@ public class Inventory : MonoBehaviour
 			SetCursorState ();
 		}else if (Input.GetButtonDown ("OpenMap")) 
 		{
-			nextFreeSlot = 0;
+			mapSlots [0] = new Item ();
 			showInventory = !showInventory;
 			showMaps = !showMaps;
 			FirstPersonController.isInventoryOpen = !FirstPersonController.isInventoryOpen;
@@ -146,8 +147,7 @@ public class Inventory : MonoBehaviour
 						}
 						if (e.button == 1 && e.type == EventType.mouseDown && !draggingItem) 
 						{
-							mapSlots [nextFreeSlot] = slots [count];
-							nextFreeSlot++;
+							mapSlots [0] = slots [count];
 						}
 					} 
 				} else {
@@ -179,6 +179,16 @@ public class Inventory : MonoBehaviour
 				SetIsLighterPicked (false);
 			}
 
+			if (draggedItem.itemName.Equals ("MapL1N1")) 
+			{
+				Instantiate (MapL1N1, player.transform.position, Quaternion.identity);
+			}
+
+			if (draggedItem.itemName.Equals ("MapL1N2")) 
+			{
+				Instantiate (MapL1N2, player.transform.position, Quaternion.identity);
+			}
+
 			draggedItem = null;
 			draggingItem = false;
 			inventory [previousIndex] = new Item ();
@@ -192,29 +202,13 @@ public class Inventory : MonoBehaviour
 		int count = 0;
 		float screenWidth = Screen.width;
 		float screenHeight = Screen.height;
-		float slotMapWidth = screenWidth / 4;
-		float slotMapHeight = screenHeight / 3;
-		float offsetX = (screenWidth - (slotMapWidth*3)) / 4;
-		float offsetY = (screenHeight - (slotMapHeight * 2)) / 3;
-		for (int y = 1; y <= 2; y++) 
-		{
-			for (int x = 1; x <= 3; x++) 
-			{
-				Rect slotBox = new Rect ((Screen.width - ((x * offsetX) + x*slotMapWidth)), (Screen.height - ( (y * offsetY) + (y*slotMapHeight) ) ), slotMapWidth, slotMapHeight);
-				GUI.Box (slotBox, "", skin.GetStyle("Slot Background"));
-				if (mapSlots [count].itemName != null) 
-				{
-					GUI.DrawTexture (slotBox, mapSlots[count].itemIcon);
-					//string name = mapSlots [count].itemName;
-					//if (name.Equals ("MapL1N1")) 
-					//{
-						
-					//}
-				}
-
-				count++;
-			}
-		}
+		float slotMapWidth = (screenWidth * percentageByX) / 100;
+		float slotMapHeight = (screenHeight * percentageByY) / 100;
+		float offsetX = (screenWidth / 2) - (slotMapWidth / 2);
+		float offsetY = (screenHeight / 2) - (slotMapHeight / 2);
+		Rect slotBox = new Rect (offsetX, offsetY, slotMapWidth, slotMapHeight);
+		GUI.Box (slotBox, "", skin.GetStyle("Map Slot Background"));
+		GUI.DrawTexture (slotBox, mapSlots[0].itemIcon);
 	}
 
 	private string CreateTooltip (Item item)

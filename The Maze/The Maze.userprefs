@@ -1,14 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Inventory\Inventory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SpinTrap\Spin.cs">
     <Files>
       <File FileName="Assets\Scripts\ButtonPopUp\PopButtonToPress.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Inventory\Inventory.cs" Line="212" Column="8" />
-      <File FileName="Assets\Scripts\Pick\PickUpScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory\Inventory.cs" Line="95" Column="3" />
+      <File FileName="Assets\Scripts\Pick\PickUpScript.cs" Line="49" Column="31" />
       <File FileName="Assets\Scripts\Inventory\Item.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Inventory\ItemDatabase.cs" Line="13" Column="36" />
-      <File FileName="Assets\Scripts\TorchPuzzle\TorchPuzzle.cs" Line="1" Column="1" />
-      <File FileName="Assets\Models\torch\scripts\Torchelight.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory\ItemDatabase.cs" Line="13" Column="32" />
+      <File FileName="Assets\Scripts\SomniferousTrap\SmokeDetection.cs" Line="63" Column="20" />
+      <File FileName="Assets\Scripts\Light\LightScript.cs" Line="29" Column="12" />
+      <File FileName="Assets\Scripts\FlashingLight\FlashingLight.cs" Line="17" Column="61" />
+      <File FileName="Assets\Scripts\MenuScripts\MenuScript.cs" Line="31" Column="30" />
+      <File FileName="Assets\Scripts\SpinTrap\Spin.cs" Line="100" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

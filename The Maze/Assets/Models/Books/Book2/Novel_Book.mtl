@@ -1,0 +1,32 @@
+# Blender MTL File: 'cycle-perspective-book.blend'
+# Material Count: 3
+
+newmtl Book_Cover_Default_Render
+Ns 37.254902
+Ka 0.008586 0.010136 0.013411
+Kd 0.966489 1.000000 0.932982
+Ks 0.368000 0.420598 0.600000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Disp C:\\Users\\Kyle Snelgrove\\Desktop\\cover_norm.jpg
+map_Kd C:\\Users\\Kyle Snelgrove\\Desktop\\cover_texture.jpg
+
+newmtl Floor_Default_Render
+Ns 96.078431
+Ka 0.008586 0.010136 0.013411
+Kd 1.000000 1.000000 1.000000
+Ks 0.419598 0.419598 0.419598
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Paper_Default_Render
+Ns 9.803922
+Ka 0.008156 0.009630 0.012740
+Kd 0.495276 0.495276 0.495276
+Ks 0.029117 0.029117 0.029117
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Kyle Snelgrove\\Desktop\\paper_texture.jpg
