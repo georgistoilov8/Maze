@@ -126,6 +126,13 @@ public class Inventory : MonoBehaviour
 				Rect slotBox = new Rect ((Screen.width - (x * slotOffsetByX)), (Screen.height - (y * slotOffsetByY)), slotHeight, slotWidth);
 				GUI.Box (slotBox, "", skin.GetStyle("Slot Background"));
 				slots [count] = inventory [count];
+				if (slots [count].itemName != null) 
+				{
+					if (slots [count].itemName.Equals ("Markers")) 
+					{
+						GUI.Label (new Rect ((Screen.width - (x * slotOffsetByX) + 30), (Screen.height - (y * slotOffsetByY) + 30), 15, 15 ), "11");
+					}
+				}
 				if(slots[count].itemName != null)
 				{
 					GUI.DrawTexture (slotBox, slots[count].itemIcon);
@@ -172,21 +179,27 @@ public class Inventory : MonoBehaviour
 
 		if (draggingItem && e.type == EventType.MouseUp && shouldRemoveItemFromInventory) 
 		{
+			Vector3 cameraDirection = Camera.main.transform.forward;
+			Vector3 newClonePosition = new Vector3 (player.transform.position.x + cameraDirection.x, player.transform.position.y + cameraDirection.y, player.transform.position.z + cameraDirection.z); //to be placed in front of the player
 			Debug.Log ("Should destroy.");
 			if (draggedItem.itemName.Equals ("Lighter")) 
 			{
-				Instantiate (lighter, player.transform.position , Quaternion.identity);
+				
+				GameObject l = Instantiate (lighter, newClonePosition , Quaternion.identity);
+				l.gameObject.tag = "Lighter";
 				SetIsLighterPicked (false);
 			}
 
 			if (draggedItem.itemName.Equals ("MapL1N1")) 
 			{
-				Instantiate (MapL1N1, player.transform.position, Quaternion.identity);
+				GameObject map = Instantiate (MapL1N1, newClonePosition, Quaternion.identity);
+				map.gameObject.tag = "Map";
 			}
 
 			if (draggedItem.itemName.Equals ("MapL1N2")) 
 			{
-				Instantiate (MapL1N2, player.transform.position, Quaternion.identity);
+				GameObject map =Instantiate (MapL1N2, newClonePosition, Quaternion.identity);
+				map.gameObject.tag = "Map";
 			}
 
 			draggedItem = null;
