@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
 {
 	public int slotsPerX, slotsPerY;
 	public GUISkin skin;
+	private GUIStyle guiStyle = new GUIStyle();
 	public List<Item> inventory = new List<Item>();
 	public List<Item> slots = new List<Item>();
 	private List<Item> mapSlots = new List<Item> ();
@@ -39,10 +40,12 @@ public class Inventory : MonoBehaviour
 	public GameObject torch;
 	public GameObject MapL1N1;
 	public GameObject MapL1N2;
+	public GameObject marker;
 	public float percentageByX;
 	public float percentageByY;
 
 	private bool shouldRemoveItemFromInventory;
+	private float markersCount;
 	// Use this for initialization
 	void Start () 
 	{
@@ -64,6 +67,9 @@ public class Inventory : MonoBehaviour
 		//AddItem (3);
 		//AddItem (2);
 		player = GameObject.FindGameObjectWithTag ("Player");
+		guiStyle.fontSize = 25;
+		guiStyle.normal.textColor = Color.red;
+		markersCount = 10;
 	}
 
 	void Update ()
@@ -126,16 +132,13 @@ public class Inventory : MonoBehaviour
 				Rect slotBox = new Rect ((Screen.width - (x * slotOffsetByX)), (Screen.height - (y * slotOffsetByY)), slotHeight, slotWidth);
 				GUI.Box (slotBox, "", skin.GetStyle("Slot Background"));
 				slots [count] = inventory [count];
-				if (slots [count].itemName != null) 
-				{
-					if (slots [count].itemName.Equals ("Markers")) 
-					{
-						GUI.Label (new Rect ((Screen.width - (x * slotOffsetByX) + 30), (Screen.height - (y * slotOffsetByY) + 30), 15, 15 ), "11");
-					}
-				}
 				if(slots[count].itemName != null)
 				{
 					GUI.DrawTexture (slotBox, slots[count].itemIcon);
+					if (slots [count].itemName.Equals ("Markers")) 
+					{
+						GUI.Label (new Rect ((Screen.width - (x * slotOffsetByX) + 25), (Screen.height - (y * slotOffsetByY) + 25), 30, 30 ), markersCount.ToString(), guiStyle);
+					}
 					if (slotBox.Contains (e.mousePosition)) {
 						showTooltip = true;
 						tooltip = CreateTooltip (slots [count]);
@@ -154,7 +157,23 @@ public class Inventory : MonoBehaviour
 						}
 						if (e.button == 1 && e.type == EventType.mouseDown && !draggingItem) 
 						{
-							mapSlots [0] = slots [count];
+							if (slots [count].itemName.Equals ("Markers")) 
+							{
+								markersCount--;
+								Vector3 cameraDirection = Camera.main.transform.forward;
+								Vector3 newClonePosition = new Vector3 (player.transform.position.x + cameraDirection.x, player.transform.position.y + cameraDirection.y, player.transform.position.z + cameraDirection.z);
+								Instantiate (marker, newClonePosition , Quaternion.identity);
+								if (markersCount == 0) 
+								{
+									slots [count] = new Item ();
+								}
+							}
+
+							if (slots [count].itemName.Contains ("Map")) 
+							{
+								mapSlots [0] = slots [count];
+							}
+
 						}
 					} 
 				} else {
@@ -280,5 +299,10 @@ public class Inventory : MonoBehaviour
 	public bool GetIsLighterPicked()
 	{
 		return isLighterPicked;
+	}
+
+	public void increaseMarkersCount()
+	{
+		markersCount++;
 	}
 }

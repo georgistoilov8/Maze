@@ -36,8 +36,7 @@ public class PickUpScript : MonoBehaviour {
 				{
 					inventory.AddItem (1);
 					inventory.SetIsLighterPicked (true);
-				} else if (this.tag.Equals ("Map")) 
-				{
+				} else if (this.tag.Equals ("Map")) {
 					if (this.name.Contains ("MapL1N1")) 
 					{
 						inventory.AddItem (2);
@@ -48,6 +47,9 @@ public class PickUpScript : MonoBehaviour {
 				} else if (this.name.Contains ("Markers")) 
 				{
 					inventory.AddItem (4);
+				} else if (this.name.Contains ("Marker") && !this.name.Contains ("Markers")) 
+				{
+					inventory.increaseMarkersCount ();
 				}
 				Destroy (this.gameObject);
 			}
