@@ -1,9 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TorchPuzzle\Torchelight.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Pick\PickUpScript.cs">
     <Files>
       <File FileName="Assets\Scripts\TorchPuzzle\Torchelight.cs" Line="88" Column="3" />
       <File FileName="Assets\Scripts\TorchPuzzle\TorchPuzzle.cs" Line="36" Column="6" />
+      <File FileName="Assets\Scripts\Inventory\Inventory.cs" Line="297" Column="16" />
+      <File FileName="Assets\Scripts\Pick\PickUpScript.cs" Line="55" Column="26" />
+      <File FileName="Assets\Scripts\Flashlight\TurnOnFlashlight.cs" Line="21" Column="44" />
+      <File FileName="Assets\Scripts\Inventory\ItemDatabase.cs" Line="15" Column="112" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

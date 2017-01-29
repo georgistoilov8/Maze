@@ -50,6 +50,9 @@ public class PickUpScript : MonoBehaviour {
 				} else if (this.name.Contains ("Marker") && !this.name.Contains ("Markers")) 
 				{
 					inventory.increaseMarkersCount ();
+				} else if (this.tag.Equals ("Flashlight")) 
+				{
+					inventory.AddItem (5);
 				}
 				Destroy (this.gameObject);
 			}

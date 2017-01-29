@@ -37,7 +37,8 @@ public class Inventory : MonoBehaviour
 
 	private GameObject player;
 	public GameObject lighter;
-	public GameObject torch;
+	public GameObject fLight; 							//flashlight light
+	public GameObject flashlight;
 	public GameObject MapL1N1;
 	public GameObject MapL1N2;
 	public GameObject marker;
@@ -64,8 +65,6 @@ public class Inventory : MonoBehaviour
 			mapSlots.Add (new Item ());
 		}
 		database = GameObject.FindGameObjectWithTag ("ItemDatabase").GetComponent<ItemDatabase>();
-		//AddItem (3);
-		//AddItem (2);
 		player = GameObject.FindGameObjectWithTag ("Player");
 		guiStyle.fontSize = 25;
 		guiStyle.normal.textColor = Color.red;
@@ -219,6 +218,13 @@ public class Inventory : MonoBehaviour
 			{
 				GameObject map =Instantiate (MapL1N2, newClonePosition, Quaternion.identity);
 				map.gameObject.tag = "Map";
+			}
+
+			if (draggedItem.itemName.Equals ("Flashlight")) 
+			{
+				GameObject f = Instantiate (flashlight, newClonePosition, Quaternion.identity);
+				f.gameObject.tag = "Flashlight";
+				fLight.GetComponent<Light> ().enabled = false;
 			}
 
 			draggedItem = null;
