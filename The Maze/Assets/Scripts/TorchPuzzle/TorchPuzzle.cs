@@ -9,8 +9,8 @@ public class TorchPuzzle : MonoBehaviour {
 	public static bool updatePuzzle;
 	public GameObject puzzle;
 
-	private int countBlueLights;
-	private int neededBlueLights;
+	private float countBlueLights;
+	public float neededBlueLights;
 	// Use this for initialization
 	void Start () {
 		foreach (Transform child in puzzle.transform) 
@@ -18,7 +18,6 @@ public class TorchPuzzle : MonoBehaviour {
 			torches.Add (child.gameObject);	
 		}
 		updatePuzzle = true;
-		neededBlueLights = 2;
 	}
 	
 	// Update is called once per frame

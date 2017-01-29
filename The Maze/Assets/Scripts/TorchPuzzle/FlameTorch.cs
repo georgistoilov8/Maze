@@ -84,7 +84,6 @@ public class FlameTorch : MonoBehaviour {
 	void OnTriggerEnter (Collider other) 
 	{
 		canClick = !canClick;
-		Debug.Log ("6o staa we");
 	}
 
 	void OnTriggerExit ()

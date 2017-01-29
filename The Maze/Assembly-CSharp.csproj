@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Models\torch\scene\script\TorchSlider.cs" />
      <Compile Include="Assets\Models\torch\scene\script\Torchslider2.cs" />
-     <Compile Include="Assets\Models\torch\scripts\Torchelight.cs" />
      <Compile Include="Assets\Scripts\ButtonPopUp\PopButtonToPress.cs" />
      <Compile Include="Assets\Scripts\Camera\FallDown.cs" />
      <Compile Include="Assets\Scripts\DisplayScripts\Digit.cs" />
@@ -70,6 +69,7 @@
      <Compile Include="Assets\Scripts\SpinTrap\Spin.cs" />
      <Compile Include="Assets\Scripts\TorchPuzzle\FlameTorch.cs" />
      <Compile Include="Assets\Scripts\TorchPuzzle\TorchPuzzle.cs" />
+     <Compile Include="Assets\Scripts\TorchPuzzle\Torchelight.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
