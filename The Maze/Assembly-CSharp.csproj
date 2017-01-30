@@ -52,12 +52,14 @@
      <Compile Include="Assets\Scripts\Camera\FallDown.cs" />
      <Compile Include="Assets\Scripts\DisplayScripts\Digit.cs" />
      <Compile Include="Assets\Scripts\DisplayScripts\Display.cs" />
+     <Compile Include="Assets\Scripts\ESCScript\WaitingEscScript.cs" />
      <Compile Include="Assets\Scripts\FlashingLight\FlashingLight.cs" />
      <Compile Include="Assets\Scripts\Flashlight\TurnOnFlashlight.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\Item.cs" />
      <Compile Include="Assets\Scripts\Inventory\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Light\LightScript.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\EscMenuScript.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\MovingWallTrap\MovingWall.cs" />
      <Compile Include="Assets\Scripts\Pick\PickUpScript.cs" />

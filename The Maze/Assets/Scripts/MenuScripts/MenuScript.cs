@@ -36,6 +36,7 @@ public class MenuScript : MonoBehaviour {
 		quitMenu.enabled = false;
 		startText.enabled = true;
 		exitText.enabled = true;
+		optionText.enabled = true;
 	}
 
 	public void StartLevel()
