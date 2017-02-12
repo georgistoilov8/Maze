@@ -28,7 +28,6 @@ public class Digit : MonoBehaviour
 		foreach (MeshRenderer rd in tmp)
 		{
 			rd.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-			//rd.castShadows = false;
 			rd.receiveShadows = false;
 		}
 		chList = new Dictionary<string, string>();

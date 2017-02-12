@@ -87,13 +87,16 @@ public class Torchelight : MonoBehaviour {
 
 		if (isActivated) 
 		{
-			TorchLight.GetComponent<Light> ().intensity = IntensityLight / 2f + Mathf.Lerp (IntensityLight - 0.1f, IntensityLight + 0.1f, Mathf.Cos (Time.time * 30));
+			TorchLight.GetComponent<Light> ().intensity = IntensityLight / 2f 
+				+ Mathf.Lerp (IntensityLight - 0.1f, IntensityLight + 0.1f, Mathf.Cos (Time.time * 30));
 			SetParticle ();
 
 			if (pickedColor.Equals (colorOfTorch.Blue)) {
-				TorchLight.GetComponent<Light> ().color = new Color (Mathf.Min (IntensityLight / 0.5f, 0f), Mathf.Min (IntensityLight / 2f, 0.2f), 1f); // blue
+				TorchLight.GetComponent<Light> ().color = new Color (Mathf.Min (IntensityLight / 0.5f, 0f), 
+					Mathf.Min (IntensityLight / 2f, 0.2f), 1f); // blue
 			} else {
-				TorchLight.GetComponent<Light> ().color = new Color (Mathf.Min (IntensityLight / 1f, 1.5f), Mathf.Min (IntensityLight / 2f, 1f), 0f); // orange
+				TorchLight.GetComponent<Light> ().color = new Color (Mathf.Min (IntensityLight / 1f, 1.5f), 
+					Mathf.Min (IntensityLight / 2f, 1f), 0f); // orange
 			}
 		}
 			

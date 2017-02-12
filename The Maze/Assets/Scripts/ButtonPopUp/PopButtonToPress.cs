@@ -69,7 +69,7 @@ public class PopButtonToPress : MonoBehaviour {
 			if (Input.GetButtonDown ("ClickButton")) 
 			{
 				Debug.Log ("Click");
-				checkWord ();
+				CheckWord ();
 			}
 		}
 
@@ -99,19 +99,19 @@ public class PopButtonToPress : MonoBehaviour {
 		} 
 	}
 
-	void checkWord()
+	void CheckWord()
 	{
 		string word = displayScript.message;
 		if (word.Equals (answerForFirstRiddle)) 
 		{
 			Debug.Log ("The first word is guessed");
-			showMessage ("Correct");
+			ShowMessage ("Correct");
 			isFirstWordGuessed = !isFirstWordGuessed;
 		} else {
 			if (!isFirstWordGuessed) 
 			{
 				Debug.Log ("The first word is not guessed");
-				showMessage ("Wrong");
+				ShowMessage ("Wrong");
 			}
 		}
 			
@@ -121,12 +121,12 @@ public class PopButtonToPress : MonoBehaviour {
 			{
 				Debug.Log ("The second word is guessed");
 				isSecondWordGuessed = !isSecondWordGuessed;
-				showMessage ("Correct");
+				ShowMessage ("Correct");
 			} else {
 				if (!isSecondWordGuessed) 
 				{
 					Debug.Log ("The second word is not guessed");
-					showMessage ("Wrong");
+					ShowMessage ("Wrong");
 				}
 			}
 		}
@@ -136,16 +136,16 @@ public class PopButtonToPress : MonoBehaviour {
 			if (isSecondWordGuessed == true) 
 			{
 				Debug.Log ("The third word is guessed");
-				showMessage ("Correct");
+				ShowMessage ("Correct");
 				open = !open;
 			} else {
 				Debug.Log ("The third word is not guessed");
-				showMessage ("Wrong");
+				ShowMessage ("Wrong");
 			}
 		}
 	}
 
-	void showMessage(string message)
+	void ShowMessage(string message)
 	{
 		puzzleScript.isTyping = !puzzleScript.isTyping;
 		displayScript.setMessage(message);

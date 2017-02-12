@@ -24,8 +24,6 @@ public class MovingWall : MonoBehaviour {
 
 	//booleans
 	private bool toBlock;
-	private bool toMoveCameraDown;
-	private bool toMoveCameraUp;
 	private bool startTimer;
 
 	//GameObjects which I move or change
@@ -61,8 +59,6 @@ public class MovingWall : MonoBehaviour {
 
 		startTimer = false;
 		toBlock = false;
-		toMoveCameraDown = false;
-		toMoveCameraUp = false;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerScript = player.GetComponent<RigidbodyFirstPersonController> ();
@@ -76,30 +72,7 @@ public class MovingWall : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		/*if (toMoveCameraDown) 
-		{
-			if (mainCamera.transform.rotation.x > -0.045f) {
-				mainCamera.transform.Rotate (Vector3.right * Time.deltaTime * 50);
-				Debug.Log (mainCamera.transform.rotation.x);
-			} else {
-				toMoveCameraUp = !toMoveCameraUp;
-				toMoveCameraDown = !toMoveCameraDown;
-			}
-		}
-
-		if (toMoveCameraUp) 
-		{
-			if (mainCamera.transform.rotation.x < 0) 
-			{
-				mainCamera.transform.Rotate (Vector3.left * Time.deltaTime * 50);
-			} else {
-				toMoveCameraUp = !toMoveCameraUp;
-				playerScript.enabled = !playerScript.enabled;
-				toBlock = !toBlock;
-			}
-		}*/
-
-		//moving forward
+		// Block the path
 		if (toBlock) 
 		{
 			if (position.Equals (disposal.Horizontal)) 
@@ -128,7 +101,7 @@ public class MovingWall : MonoBehaviour {
 			}
 		}
 
-		//moving back
+		//Move back
 		if (startTimer) 
 		{
 			if (timer > 0) {
@@ -181,11 +154,9 @@ public class MovingWall : MonoBehaviour {
 
 	void OnTriggerEnter()
 	{
-		Debug.Log ("Hello");
+		Debug.Log ("ENTER MOVING WALL TRAP");
 		float randomVolume = Random.Range (volLowRange, volHighRange);
 		sensorAudioSource.PlayOneShot (sensorSound, randomVolume);
-		//toMoveCameraDown = !toMoveCameraDown;
-		//playerScript.enabled = !playerScript.enabled;
 		boxCollider.enabled = !boxCollider.enabled;
 		toBlock = !toBlock;
 	}

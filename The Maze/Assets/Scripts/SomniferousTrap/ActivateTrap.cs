@@ -15,7 +15,7 @@ public class ActivateTrap : MonoBehaviour {
 	private bool notDead;
 	private GameObject player;
 	private GameObject playerChild;
-	SmokeDetection detection;
+	//SmokeDetection detection;
 
 	public GameObject topEyelid;
 	public GameObject bottomEyelid; 

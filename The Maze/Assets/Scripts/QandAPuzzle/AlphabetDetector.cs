@@ -26,22 +26,6 @@ public class AlphabetDetector : QandAPuzzle {
 		//Debug.Log(buttonPosition.y);
 	}
 
-	// Update is called once per frame
-	void Update () 
-	{
-		//if (isPlayerDetected) 
-		//{
-		//	if (buttonPosition.y > 0.09f)   //Checking position relative to the world (спрямо света, а не обекта в който се намира този обект)
-		//	{
-		//		buttonPosition = new Vector3 (buttonPosition.x, buttonPosition.y - 0.01f, buttonPosition.z);
-		//	}	
-		//} else if(!isPlayerDetected){
-		//	if (buttonPosition.y <= 0.13f) {
-		//		buttonPosition = new Vector3 (buttonPosition.x, buttonPosition.y + 0.01f, buttonPosition.z);
-		//	}
-		//}
-	}
-
 	string DetermineLetter(Vector3 position)
 	{
 		string letter = null;
