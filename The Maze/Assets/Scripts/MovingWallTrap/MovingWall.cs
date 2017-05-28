@@ -152,13 +152,16 @@ public class MovingWall : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("ENTER MOVING WALL TRAP");
-		float randomVolume = Random.Range (volLowRange, volHighRange);
-		sensorAudioSource.PlayOneShot (sensorSound, randomVolume);
-		boxCollider.enabled = !boxCollider.enabled;
-		toBlock = !toBlock;
+		if (other.tag.Equals ("Player")) 
+		{
+			Debug.Log ("ENTER MOVING WALL TRAP");
+			float randomVolume = Random.Range (volLowRange, volHighRange);
+			sensorAudioSource.PlayOneShot (sensorSound, randomVolume);
+			boxCollider.enabled = !boxCollider.enabled;
+			toBlock = !toBlock;
+		}
 	}
 
 }

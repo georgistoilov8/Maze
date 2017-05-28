@@ -8,7 +8,6 @@ public class AlphabetDetector : QandAPuzzle {
 	private Vector3 buttonPosition;
 	private GameObject lightOnStep;
 
-	// Use this for initialization
 	void Start () 
 	{
 		//isPlayerDetected = false;

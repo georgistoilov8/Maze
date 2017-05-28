@@ -36,13 +36,32 @@ public class PickUpScript : MonoBehaviour {
 				{
 					inventory.AddItem (1);
 					inventory.SetIsLighterPicked (true);
-				} else if (this.tag.Equals ("Map")) {
+				} else if (this.tag.Equals ("Map")) 
+				{
 					if (this.name.Contains ("MapL1N1")) 
 					{
 						inventory.AddItem (2);
 					} else if (this.name.Contains ("MapL1N2")) 
 					{
 						inventory.AddItem (3);
+					} else if (this.name.Contains ("MapL2N1")) 
+					{
+						inventory.AddItem (6);
+					} else if (this.name.Contains ("MapL2N2")) 
+					{
+						inventory.AddItem (7);
+					} else if (this.name.Contains ("MapL3N1")) 
+					{
+						inventory.AddItem (8);
+					} else if (this.name.Contains ("MapL3N2")) 
+					{
+						inventory.AddItem (9);
+					} else if (this.name.Contains ("MapL3N3")) 
+					{
+						inventory.AddItem (10);
+					} else if (this.name.Contains ("MapL3N4")) 
+					{
+						inventory.AddItem (11);
 					}
 				} else if (this.name.Contains ("Markers")) 
 				{

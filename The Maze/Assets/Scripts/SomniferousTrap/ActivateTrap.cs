@@ -29,7 +29,7 @@ public class ActivateTrap : MonoBehaviour {
 	private float timerAnimation;
 	private bool openEyes;
 	private float timerToOpen;
-	// Use this for initialization
+
 	void Start () {
 		activateTraps = false;
 		player = GameObject.FindGameObjectWithTag ("Player");

@@ -9,6 +9,10 @@ public class PopButtonToPress : MonoBehaviour {
 	public float boxWidth;
 	public float boxHeight;
 
+	public GameObject firstRiddleText;
+	public GameObject secondRiddleText;
+	public GameObject thirdRiddleText;
+
 	public string answerForFirstRiddle;
 	public string answerForSecondRiddle;
 	public string answerForThirdRiddle;
@@ -34,6 +38,8 @@ public class PopButtonToPress : MonoBehaviour {
 	private AudioSource openDoorSource;
 	public AudioClip openDoorSound;
 
+	public float timerToOpen;
+
 	Rect textBox;
 	// Use this for initialization
 	void Start () 
@@ -56,7 +62,8 @@ public class PopButtonToPress : MonoBehaviour {
 
 		leftDoor = doorToOpen.transform.FindChild ("Big_Door_L").gameObject;
 		rightDoor = doorToOpen.transform.FindChild ("Big_Door_R").gameObject;
-		Debug.Log (rightDoor.transform.rotation.y);
+		Debug.Log (rightDoor);
+		Debug.Log (leftDoor);
 
 		openDoorSource = doorToOpen.GetComponent<AudioSource> ();
 	}
@@ -102,38 +109,10 @@ public class PopButtonToPress : MonoBehaviour {
 	void CheckWord()
 	{
 		string word = displayScript.message;
-		if (word.Equals (answerForFirstRiddle)) 
-		{
-			Debug.Log ("The first word is guessed");
-			ShowMessage ("Correct");
-			isFirstWordGuessed = !isFirstWordGuessed;
-		} else {
-			if (!isFirstWordGuessed) 
-			{
-				Debug.Log ("The first word is not guessed");
-				ShowMessage ("Wrong");
-			}
-		}
-			
-		if (word.Equals (answerForSecondRiddle))
-		{
-			if (isFirstWordGuessed == true) 
-			{
-				Debug.Log ("The second word is guessed");
-				isSecondWordGuessed = !isSecondWordGuessed;
-				ShowMessage ("Correct");
-			} else {
-				if (!isSecondWordGuessed) 
-				{
-					Debug.Log ("The second word is not guessed");
-					ShowMessage ("Wrong");
-				}
-			}
-		}
 
-		if (word.Equals (answerForThirdRiddle)) 
+		if (isSecondWordGuessed && isFirstWordGuessed) 
 		{
-			if (isSecondWordGuessed == true) 
+			if (word.Equals (answerForThirdRiddle))  
 			{
 				Debug.Log ("The third word is guessed");
 				ShowMessage ("Correct");
@@ -143,6 +122,45 @@ public class PopButtonToPress : MonoBehaviour {
 				ShowMessage ("Wrong");
 			}
 		}
+
+		if (isFirstWordGuessed && !isSecondWordGuessed)
+		{
+			if (word.Equals (answerForSecondRiddle)) 
+			{
+				Debug.Log ("The second word is guessed");
+				isSecondWordGuessed = !isSecondWordGuessed;
+				ShowMessage ("Correct");
+				secondRiddleText.SetActive (false);
+				thirdRiddleText.SetActive (true);
+			}
+
+			if (!isSecondWordGuessed)
+			{
+				Debug.Log ("The second word is not guessed");
+				ShowMessage ("Wrong");
+			}
+
+		}
+
+		if (!isFirstWordGuessed) 
+		{
+			if (word.Equals (answerForFirstRiddle)) 
+			{
+				Debug.Log ("The first word is guessed");
+				ShowMessage ("Correct");
+				isFirstWordGuessed = !isFirstWordGuessed;
+				firstRiddleText.SetActive (false);
+				secondRiddleText.SetActive (true);
+			} else {
+				if (!isFirstWordGuessed) 
+				{
+					Debug.Log ("The first word is not guessed");
+					Debug.Log ("first if");
+					ShowMessage ("Wrong");
+				}
+			}
+		}
+
 	}
 
 	void ShowMessage(string message)
@@ -164,19 +182,17 @@ public class PopButtonToPress : MonoBehaviour {
 
 	private void OpenDoor()
 	{
-		
-		if (!openDoorSource.isPlaying) 
+		timerToOpen -= Time.deltaTime;
+		if (timerToOpen > 0) 
 		{
-			openDoorSource.PlayOneShot (openDoorSound, 1F);
-		}
+			if (!openDoorSource.isPlaying) 
+			{
+				openDoorSource.PlayOneShot (openDoorSound, 1F);
+			}
 
-		if (leftDoor.transform.rotation.y > 0) 
-		{
 			leftDoor.transform.Rotate (Vector3.up * Time.deltaTime * 10, Space.World);
-		}
-		if (rightDoor.transform.rotation.y < 0.7071)
-		{
 			rightDoor.transform.Rotate (Vector3.down * Time.deltaTime * 10, Space.World);
 		}
+
 	}
 }

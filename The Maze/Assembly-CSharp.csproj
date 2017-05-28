@@ -48,6 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\Models\torch\scene\script\TorchSlider.cs" />
      <Compile Include="Assets\Models\torch\scene\script\Torchslider2.cs" />
+     <Compile Include="Assets\Scripts\AlphabetLights\AlphabetLights.cs" />
+     <Compile Include="Assets\Scripts\AlphabetLights\StartAlphabetLights.cs" />
+     <Compile Include="Assets\Scripts\AlphabetLights\StopAlphabetLights.cs" />
      <Compile Include="Assets\Scripts\ButtonPopUp\PopButtonToPress.cs" />
      <Compile Include="Assets\Scripts\Camera\FallDown.cs" />
      <Compile Include="Assets\Scripts\DisplayScripts\Digit.cs" />
@@ -64,13 +67,12 @@
      <Compile Include="Assets\Scripts\MovingWallTrap\MovingWall.cs" />
      <Compile Include="Assets\Scripts\Pick\PickUpScript.cs" />
      <Compile Include="Assets\Scripts\QandAPuzzle\AlphabetDetector.cs" />
-     <Compile Include="Assets\Scripts\QandAPuzzle\LetterCheck.cs" />
      <Compile Include="Assets\Scripts\QandAPuzzle\QandAPuzzle.cs" />
      <Compile Include="Assets\Scripts\SomniferousTrap\ActivateTrap.cs" />
      <Compile Include="Assets\Scripts\SomniferousTrap\DetectAndRemove.cs" />
      <Compile Include="Assets\Scripts\SomniferousTrap\SmokeDetection.cs" />
      <Compile Include="Assets\Scripts\SpinTrap\Spin.cs" />
-     <Compile Include="Assets\Scripts\TorchPuzzle\FlameTorch.cs" />
+     <Compile Include="Assets\Scripts\TheEndScript\TheEndScript.cs" />
      <Compile Include="Assets\Scripts\TorchPuzzle\TorchPuzzle.cs" />
      <Compile Include="Assets\Scripts\TorchPuzzle\Torchelight.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

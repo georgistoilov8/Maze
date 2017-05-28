@@ -20,7 +20,6 @@ public class TurnOnFlashlight : MonoBehaviour {
 				this.gameObject.GetComponent<Light> ().enabled = false;
 			}else if (inventory.InventoryContains (5)) 
 			{
-				Debug.Log ("asd");
 				this.gameObject.GetComponent<Light> ().enabled = true;
 			}
 		}

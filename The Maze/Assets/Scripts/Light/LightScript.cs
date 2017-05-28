@@ -17,7 +17,6 @@ public class LightScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		foreach (Transform child in lampsInMaze.transform)
 		{
-			Debug.Log (child.transform.position);
 			lamps.Add (child.gameObject);
 		}
 	}

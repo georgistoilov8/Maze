@@ -47,6 +47,8 @@ public class Inventory : MonoBehaviour
 
 	private bool shouldRemoveItemFromInventory;
 	private float markersCount;
+
+	private bool mapClicked;
 	// Use this for initialization
 	void Start () 
 	{
@@ -69,6 +71,7 @@ public class Inventory : MonoBehaviour
 		guiStyle.fontSize = 25;
 		guiStyle.normal.textColor = Color.red;
 		markersCount = 10;
+		mapClicked = false;
 	}
 
 	void Update ()
@@ -89,7 +92,7 @@ public class Inventory : MonoBehaviour
 			cursorState = CursorLockMode.None;
 			Cursor.lockState = cursorState;
 			SetCursorState ();
-
+			mapClicked = false;
 		}
 	}
 
@@ -171,6 +174,7 @@ public class Inventory : MonoBehaviour
 							if (slots [count].itemName.Contains ("Map")) 
 							{
 								mapSlots [0] = slots [count];
+								mapClicked = true;
 							}
 
 						}
@@ -198,7 +202,8 @@ public class Inventory : MonoBehaviour
 		if (draggingItem && e.type == EventType.MouseUp && shouldRemoveItemFromInventory) 
 		{
 			Vector3 cameraDirection = Camera.main.transform.forward;
-			Vector3 newClonePosition = new Vector3 (player.transform.position.x + cameraDirection.x, player.transform.position.y + cameraDirection.y, player.transform.position.z + cameraDirection.z); //to be placed in front of the player
+			Vector3 newClonePosition = new Vector3 (player.transform.position.x + cameraDirection.x, 
+				player.transform.position.y + cameraDirection.y, player.transform.position.z + cameraDirection.z); //to be placed in front of the player
 			Debug.Log ("Should destroy.");
 			if (draggedItem.itemName.Equals ("Lighter")) 
 			{
@@ -246,7 +251,8 @@ public class Inventory : MonoBehaviour
 		float offsetY = (screenHeight / 2) - (slotMapHeight / 2);
 		Rect slotBox = new Rect (offsetX, offsetY, slotMapWidth, slotMapHeight);
 		GUI.Box (slotBox, "", skin.GetStyle("Map Slot Background"));
-		GUI.DrawTexture (slotBox, mapSlots[0].itemIcon);
+		if(mapClicked)
+			GUI.DrawTexture (slotBox, mapSlots[0].itemIcon);
 	}
 
 	private string CreateTooltip (Item item)

@@ -12,10 +12,6 @@ public class Display : MonoBehaviour
 	/// </summary>
 	public Digit[] digit;
 
-	void Start ()
-	{
-	}
-
 	public void setMessage(string m)
 	{
 		message = m;
